@@ -26,7 +26,7 @@ class $modify(MyPlayLayer, PlayLayer) {
                 opacity = m_fields->theTimeUDed / maxDeath * 255;
             }
         }
-        m_fields->spongebob->setOpacity(opacity);
+        m_fields->spongebob->setOpacity(static_cast<GLubyte>(opacity));
     }
 
     bool init(GJGameLevel* level, bool dontCreateObjects) {
