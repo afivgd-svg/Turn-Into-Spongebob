@@ -1,0 +1,47 @@
+{
+	"geode": "6.0.0-alpha.1",
+	"gd": {
+		"win": "2.2091",
+		"android": "2.2091",
+		"mac": "2.2091",
+		"ios": "2.2091"
+	},
+	"id": "afivgd.testingnewupdate",
+	"name": "TestingNewUpdate",
+	"version": "v1.0.0",
+	"developer": "AFiVGD",
+	"description": "",
+	"resources": {
+		"sprites": [
+			"resources/sad_sponboob.png"
+		]
+	},
+	"settings": {
+		"max-death": {
+			"name": "Max Deaths",
+			"type": "int",
+			"default": 10,
+			"description": "How many deaths needed until the spongbob icon is 100% opacity and take over the worl- i mean the player completely",
+			"min": 0,
+			"max": 50,
+			"control": {
+				"slider": true
+			}
+		},
+		"custom-image": {
+			"type": "file",
+			"name": "Images",
+			"description": "An image that will replace the Player Icon and take over the World... You may want to keep the image square",
+			"default": "",
+			"control": {
+				"dialog": "open",
+				"filters": [
+					{
+						"files": ["*.png", "*.jpg"],
+						"description": "Image Files"
+					}
+				]
+			}
+		}
+	}
+}
