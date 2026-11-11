@@ -29,17 +29,9 @@ class $modify(MyPlayLayer, PlayLayer) {
         if (spongebobPath.empty()) spongebobPath = "sad_sponboob.png"_spr;
         
         m_fields->spongebob = CCSprite::create(spongebobPath.string().c_str());
-        auto batchLayer = this->getChildByIndex(0)->getChildByIndex(2);
-        batchLayer->addChild(m_fields->spongebob);
+        //auto batchLayer = this->getChildByIndex(0)->getChildByIndex(2);
+        m_player1->addChild(m_fields->spongebob);
 
         return true;
-    }
-
-    void update(float dt) {
-        PlayLayer::update(dt);
-
-        m_fields->spongebob->setPosition(m_player1->getPosition());
-        m_fields->spongebob->setRotation(m_player1->getRotation());
-        m_fields->spongebob->setScale(m_player1->getScale());
     }
 };
