@@ -16,7 +16,7 @@ class $modify(MyPlayLayer, PlayLayer) {
         auto maxDeath  = Mod::get()->getSettingValue<int>("max-death");
         m_fields->theTimeUDed++;
         float opacity = (int)(
-            m_fields->theTimeUDed => maxDeath ? 255 : (
+            m_fields->theTimeUDed >= maxDeath ? 255 : (
                 maxDeath <= 0 ? 255 : m_fields->theTimeUDed / maxDeath * 255
             )
         );
