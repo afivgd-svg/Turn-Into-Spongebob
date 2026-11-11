@@ -40,6 +40,7 @@ class $modify(MyPlayLayer, PlayLayer) {
         auto spongebob = m_fields->spongebob;
         spongebob = CCSprite::create(spongebobPath.string().c_str());
         spongebob->setScaleY(spongebob->getContentSize().height / 30);
+        spongebob->setOpacity(255);
         //auto batchLayer = this->getChildByIndex(0)->getChildByIndex(2);
         m_player1->addChild(spongebob);
 
