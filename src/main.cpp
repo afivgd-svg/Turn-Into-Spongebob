@@ -18,8 +18,7 @@ class $modify(MyPlayLayer, PlayLayer) {
         auto opacity = maxDeath <= 0
             ? 255
             : std::clamp(m_fields->theTimeUDed * 255 / maxDeath, 0, 255);
-
-        m_fields->spongebob->setOpacity(static_cast<GLubyte>(opacity));
+        if (m_fields->spongebob) m_fields->spongebob->setOpacity(static_cast<GLubyte>(opacity));
     }
 
     bool init(GJGameLevel* level, bool dontCreateObjects) {
@@ -36,7 +35,7 @@ class $modify(MyPlayLayer, PlayLayer) {
             spongebob = CCSprite::create("sad_sponboob.png"_spr);
         }
         spongebob->setScaleY(spongebob->getContentSize().height / 30);
-        spongebob->setOpacity(255);
+        spongebob->setOpacity(0);
         //auto batchLayer = this->getChildByIndex(0)->getChildByIndex(2);
         m_player1->addChild(spongebob);
 
