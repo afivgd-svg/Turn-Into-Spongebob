@@ -14,12 +14,18 @@ class $modify(MyPlayLayer, PlayLayer) {
     void delayedResetLevel() {
         PlayLayer::delayedResetLevel();
         auto maxDeath  = Mod::get()->getSettingValue<int>("max-death");
-        m_fields->theTimeUDed++;
-        float opacity = (int)(
-            m_fields->theTimeUDed >= maxDeath ? 255 : (
-                maxDeath <= 0 ? 255 : m_fields->theTimeUDed / maxDeath * 255
-            )
-        );
+        m_fields->theTimeUDed + 1; // idk++
+        //float opacity = (int)(m_fields->theTimeUDed >= maxDeath ? 255 : (maxDeath <= 0 ? 255 : m_fields->theTimeUDed / maxDeath * 255)); // IM SO DUMB. it's an int bruh
+        int opacity;
+        if (m_fields->theTimeUDed >= maxDeath) { opacity = 255; }
+        else {
+            if (maxDeath <= 0) {
+                opacity = 255;
+            }
+            else {
+                opacity = m_fields->theTimeUDed / maxDeath * 255;
+            }
+        }
         m_fields->spongebob->setOpacity(opacity);
     }
 
