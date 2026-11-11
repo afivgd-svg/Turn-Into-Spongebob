@@ -15,8 +15,11 @@ class $modify(MyPlayLayer, PlayLayer) {
         PlayLayer::delayedResetLevel();
         auto maxDeath  = Mod::get()->getSettingValue<int>("max-death");
         m_fields->theTimeUDed++;
-        float opacity = (int)(maxDeath <= 0 ? 255 : m_fields->theTimeUDed / maxDeath * 255);
-        m_player1->setOpacity(255 - opacity);
+        float opacity = (int)(
+            m_fields->theTimeUDed => maxDeath ? 255 : (
+                maxDeath <= 0 ? 255 : m_fields->theTimeUDed / maxDeath * 255
+            )
+        );
         m_fields->spongebob->setOpacity(opacity);
     }
 
@@ -28,9 +31,11 @@ class $modify(MyPlayLayer, PlayLayer) {
         auto spongebobPath = Mod::get()->getSettingValue<asp::fs::Path>("custom-image");
         if (spongebobPath.empty()) spongebobPath = "sad_sponboob.png"_spr;
         
-        m_fields->spongebob = CCSprite::create(spongebobPath.string().c_str());
+        auto spongebob = m_fields->spongebob;
+        spongebob = CCSprite::create(spongebobPath.string().c_str());
+        spongebob->setScaleY(spongebob->getContentSize().height / 30);
         //auto batchLayer = this->getChildByIndex(0)->getChildByIndex(2);
-        m_player1->addChild(m_fields->spongebob);
+        m_player1->addChild(spongebob);
 
         return true;
     }
