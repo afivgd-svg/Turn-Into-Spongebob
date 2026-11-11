@@ -25,7 +25,7 @@ class $modify(MyPlayLayer, PlayLayer) {
             return false;
         }
 
-        auto spongebobPath = Mod::get()->getSettingValue<std::filesystem::path>("custom-image");
+        auto spongebobPath = Mod::get()->getSettingValue<asp::fs::Path>("custom-image");
         if (spongebobPath.empty()) spongebobPath = "sad_sponboob.png"_spr;
         
         m_fields->spongebob = CCSprite::create(spongebobPath.string().c_str());
