@@ -22,8 +22,8 @@
 			"type": "int",
 			"default": 10,
 			"description": "How many deaths needed until the spongbob icon is 100% opacity and take over the worl- i mean the player completely",
-			"min": 0,
-			"max": 50,
+			"min": 1,
+			"max": 1000,
 			"control": {
 				"slider": true
 			}

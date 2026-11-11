@@ -8,7 +8,6 @@ using namespace geode::prelude;
 class $modify(MyPlayLayer, PlayLayer) {
     struct Fields {
         int theTimeUDed = 0;
-        CCSprite* spongebob; // ts can be anything actaully
     };
 
     void delayedResetLevel() {
@@ -18,27 +17,17 @@ class $modify(MyPlayLayer, PlayLayer) {
         auto opacity = maxDeath <= 0
             ? 255
             : std::clamp(m_fields->theTimeUDed * 255 / maxDeath, 0, 255);
-        if (m_fields->spongebob) m_fields->spongebob->setOpacity(static_cast<GLubyte>(opacity));
-    }
-
-    bool init(GJGameLevel* level, bool dontCreateObjects) {
-        if (!PlayLayer::init(level, dontCreateObjects)) {
-            return false;
-        }
+        //if (m_fields->spongebob) m_fields->spongebob->setOpacity(static_cast<GLubyte>(opacity));
 
         auto spongebobPath = Mod::get()->getSettingValue<asp::fs::Path>("custom-image");
         if (spongebobPath.empty()) spongebobPath = "sad_sponboob.png"_spr;
         
-        auto spongebob = m_fields->spongebob;
-        spongebob = CCSprite::create(spongebobPath.string().c_str());
+        CCSprite* spongebob = CCSprite::create(spongebobPath.string().c_str());
         if (!spongebob) {
             spongebob = CCSprite::create("sad_sponboob.png"_spr);
         }
         spongebob->setScaleY(spongebob->getContentSize().height / 30);
-        spongebob->setOpacity(0);
-        //auto batchLayer = this->getChildByIndex(0)->getChildByIndex(2);
+        spongebob->setOpacity(opacity);
         m_player1->addChild(spongebob);
-
-        return true;
     }
 };
